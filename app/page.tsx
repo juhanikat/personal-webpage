@@ -1,10 +1,9 @@
-
 import Image from "next/image"
 
 function InfoCard({
   title,
   description,
-  linkedin
+  linkedin,
 }: {
   title: string
   description: string
@@ -31,7 +30,7 @@ function InfoCard({
 export default function Home() {
   return (
     <div className="min-h-screen w-full">
-      <main className="flex min-h-screen w-full flex-row justify-around gap-10">
+      <main className="bg-sky-950/30 flex min-h-screen w-full flex-row justify-around gap-10">
         <div className="flex flex-col justify-center">
           <Image
             src="/juhani_naama.jpg"
@@ -42,7 +41,11 @@ export default function Home() {
           />
         </div>
         <div className=" w-1/2 flex flex-col justify-center">
-          <InfoCard title="Juhani Kataja" description="Student at University of Helsinki." linkedin="https://www.linkedin.com/in/juhani-kataja-1b211b2aa/" />
+          <InfoCard
+            title="Juhani Kataja"
+            description="Student at University of Helsinki."
+            linkedin="https://www.linkedin.com/in/juhani-kataja-1b211b2aa/"
+          />
         </div>
       </main>
     </div>
