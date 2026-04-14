@@ -1,4 +1,9 @@
+"use client"
+
 import Image from "next/image"
+import { ViewTransition } from "react"
+import { useState } from "react"
+import Link from "next/link"
 
 function InfoCard({
   title,
@@ -28,19 +33,26 @@ function InfoCard({
 }
 
 export default function Home() {
+  const [showZoomedView, setShowZoomedView] = useState(false)
+
   return (
     <div className="min-h-screen w-full">
-      <main className="bg-sky-950/30 flex min-h-screen w-full flex-row justify-around gap-10">
+      <main className="flex min-h-screen w-full flex-row justify-around gap-10 bg-sky-950/40 ">
         <div className="flex flex-col justify-center">
-          <Image
-            src="/juhani_naama.jpg"
-            alt="Picture of me"
-            width={300}
-            height={200}
-            priority
-          />
+          <ViewTransition name={"photo"}>
+            <Link href={"/zoomedview"}>
+              <Image
+                src="/juhani_naama.jpg"
+                alt="Picture of me"
+                width={300}
+                height={200}
+                priority
+                onClick={() => setShowZoomedView(!showZoomedView)}
+              />
+            </Link>
+          </ViewTransition>
         </div>
-        <div className=" w-1/2 flex flex-col justify-center">
+        <div className="w-1/2 flex flex-col justify-center">
           <InfoCard
             title="Juhani Kataja"
             description="Student at University of Helsinki."
